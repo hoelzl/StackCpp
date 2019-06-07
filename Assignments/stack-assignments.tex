@@ -95,7 +95,7 @@
   \begin{itemize}
   \item Extend the \texttt{Stack} data type with a member function\\[1ex]
     \texttt{int Count(int element)}\\[1ex]
-    that counts the ocurrences of \emph{element} on the stack
+    that counts the occurrences of \emph{element} on the stack
   \end{itemize}
 \end{frame}
 
@@ -113,11 +113,11 @@
   \frametitle{Extension (4)}  
   \begin{itemize}
   \item Extend the \texttt{Stack} data type with member functions\\[1ex]
-    \texttt{void setDefault(int default)}\\
-    \texttt{void clearDefault()}\\[1ex]
-    After \texttt{setDefault(default)} has been called, \texttt{pop()}
-    should act like \texttt{popDefault(default)}. When
-    \texttt{clearDefault()} is called, \texttt{pop()} should revert to
+    \texttt{void SetDefault(int default)}\\
+    \texttt{void ClearDefault()}\\[1ex]
+    After \texttt{SetDefault(default)} has been called, \texttt{Pop()}
+    should act like \texttt{PopDefault(default)}. When
+    \texttt{ClearDefault()} is called, \texttt{Pop()} should revert to
     its original behavior, i.e., throw an exception when the stack is
     empty
   \end{itemize}
@@ -133,7 +133,7 @@
 
     Modify your implementation so that it uses a
     \verb|std::array<int, 16>| to store its elements. Make
-    \texttt{push()} throw an exception of type
+    \texttt{Push()} throw an exception of type
     \verb!std::out_of_bounds!
   \end{itemize}
 \end{frame}
