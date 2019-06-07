@@ -9,7 +9,7 @@ enable_testing()
 include_directories(googletest/googletest/include googletest/googlemock/include)
 
 # The bad part
-add_library(Stack Stack/Stack.cpp Stack/Stack.h Stack/Main.cpp)
+add_library(Stack Stack/Stack.cpp Stack/Stack.h)
 
 add_executable(StackMain Stack/Main.cpp)
 target_link_libraries(StackMain Stack)
