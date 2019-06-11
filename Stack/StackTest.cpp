@@ -1,3 +1,5 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cert-err58-cpp"
 #include "Stack.h"
 #include "gmock/gmock.h"
 
@@ -11,31 +13,40 @@ public:
 };
 
 TEST_F(StackTest, IsEmpty_ReturnsTrue_WhenStackIsNewlyConstructed) {
-    ASSERT_TRUE(unit.IsEmpty());
+    EXPECT_TRUE(unit.IsEmpty());
 }
 
 TEST_F(StackTest, IsEmpty_ReturnsFalse_WhenPopWasCalled)
 {
     unit.Push(a_random_number_);
 
-    ASSERT_FALSE(unit.IsEmpty());
+    EXPECT_THAT(unit.IsEmpty(), Eq(false));
 }
 
 TEST_F(StackTest, Push_PushesItem) {
     unit.Push(a_random_number_);
 
-    ASSERT_THAT(unit.Pop(), Eq(a_random_number_));
+    EXPECT_THAT(unit.Pop(), Eq(a_random_number_));
+}
+
+TEST_F(StackTest, Pop_RemovesItem) {
+    unit.Push(a_random_number_);
+
+    EXPECT_THAT(unit.IsEmpty(), Eq(false));
 }
 
 TEST_F(StackTest, Push_PushesOnTopOfPreviousElements) {
     unit.Push(a_random_number_);
     unit.Push(another_random_number_);
+    ASSERT_THAT(unit.IsEmpty(), Eq(false));
 
-    ASSERT_THAT(unit.Pop(), Eq(another_random_number_));
-    ASSERT_THAT(unit.Pop(), Eq(a_random_number_));
-    ASSERT_THAT(unit.IsEmpty(), Eq(true));
+    EXPECT_THAT(unit.Pop(), Eq(another_random_number_));
+    EXPECT_THAT(unit.Pop(), Eq(a_random_number_));
+    EXPECT_THAT(unit.IsEmpty(), Eq(true));
 }
 
 TEST_F(StackTest, Pop_ThrowsOnEmptyStack) {
-    ASSERT_THROW(unit.Pop(), std::out_of_range);
+    EXPECT_THROW(unit.Pop(), std::out_of_range);
 }
+
+#pragma clang diagnostic pop
